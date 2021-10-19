@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import GenerateForm from "./components/GenerateForm/GenerateForm";
+import Home from "./components/Home/Home";
+import './App.css'
+import FormMake from "./components/FormMake/FormMake";
+import FormView from "./components/FormView/FormView";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+        <Route path="/home">
+          <Home/>
+        </Route>
+        <Route path="/form">
+          <GenerateForm/>
+        </Route>
+        <Route path="/forms/:id">
+          <FormMake/>
+        </Route>
+        <Route path="/formView/:key">
+          <FormView/>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
